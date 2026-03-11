@@ -57,6 +57,8 @@ This project visualizes key Human Resources metrics for a company of **1,709 emp
 
 ## Dashboard Sections
 
+<img width="935" height="498" alt="Dashboard" src="https://github.com/user-attachments/assets/ae1dffb7-59a8-46f8-9e8d-a5ca6dfe8ea5" />
+
 ### 1. KPI Summary (Top Row)
 - **Total Employees** — headcount snapshot
 - **Attrition Rate** — percentage of employees who left
