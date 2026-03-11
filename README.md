@@ -88,6 +88,9 @@ Key metrics calculated using Excel formulas and Pivot Tables:
 
 ## Dashboard Sections
 
+<img width="935" height="498" alt="Dashboard" src="https://github.com/user-attachments/assets/1bf6c43a-c6e8-43b2-8bad-ce6df75be248" />
+
+
 ### 1. KPI Summary
 Out of **1,709 employees**, 1,624 are active with only 85 inactive — an attrition rate of **5.23%**, reflecting strong retention. Average income is **21,422**.
 
