@@ -164,6 +164,3 @@ hr-workforce-dashboard/
 ┗ README.md
 ```
 
----
-
-> Built as part of an HR Analytics portfolio project using Microsoft Excel.
