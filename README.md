@@ -1,111 +1,121 @@
 # HR Workforce Analytics Dashboard
 
-> An interactive Power BI dashboard analyzing workforce demographics, labor costs, and headcount trends across a 3-year period (2016–2018).
+> An Excel-based dashboard analyzing workforce demographics, labour costs, and headcount trends from 2016 to 2018.
 
 ---
 
 ## Overview
 
-This project visualizes key Human Resources metrics for a company of **1,709 employees**, providing insights into workforce composition, compensation structure, and attrition — enabling data-driven HR decisions.
-
 | Metric | Value |
 |---|---|
-| Total Employees | 1,709 |
+| Total Employees | 1,709 (Active: 1,624 / Inactive: 85) |
 | Attrition Rate | 5.23% |
-| Average Salary | 21,422 |
+| Average Income | 21,422 |
+| Total Labour Cost | 36,610,903 |
 | Data Period | 2016 – 2018 |
 
 ---
 
 ## Dataset
 
-**File:** `datasetcv10.xlsx`  
-**Sheet:** `Data`  
-**Records:** 1,709 rows × 17 columns
-
-### Columns
+**File:** `datasetcv10.xlsx` — 1,709 rows × 17 columns
 
 | Column | Description |
 |---|---|
-| `Date` | Snapshot date of the record |
-| `EmpID` | Unique employee identifier |
+| `Date` | Record snapshot date |
+| `EmpID` | Unique employee ID |
 | `Gender` | Male / Female |
 | `Department` | Employee's department |
 | `Position` | Job title |
-| `Age` | Employee age (numeric) |
-| `Age Group` | Grouped age bracket (formula-derived) |
-| `EthnicGroup` | Ethnic group classification (Group A–G) |
+| `Age` | Employee age |
+| `Age Group` | Age bracket (formula-derived) |
+| `EthnicGroup` | Ethnic group (A–G) |
 | `Employment Type` | Full-time (FT) / Part-time (PT) |
-| `BU Region` | Business unit region (North, South, East, West) |
-| `HireDate` | Date employee was hired |
-| `EndDate` | Date employment ended (blank if still active) |
-| `Status` | Active / Inactive (formula-derived from EndDate) |
+| `BU Region` | North / South / East / West |
+| `HireDate` | Date of hire |
+| `EndDate` | End date (blank if still active) |
+| `Status` | Active / Inactive (formula-derived) |
 | `PayType` | Salary / Hourly |
-| `AgeGroup` | Alternative age grouping (`<25`, `25–34`, etc.) |
+| `AgeGroup` | Alternative age grouping |
 | `Date (Year)` | Year extracted from Date |
 | `Income` | Employee income / labour cost |
-
-### Key Dimensions
-
-- **Departments (10):** IT, HR, Logistics, Finance, Marketing, Technical, Operations, CS, Legal, Sales
-- **BU Regions (4):** North (755), South (477), East (281), West (196)
-- **Pay Types:** Salary (744 employees), Hourly (965 employees)
-- **Employment Types:** Full-time (744), Part-time (965)
-- **Ethnic Groups:** Group A through Group G
 
 ---
 
 ## Dashboard Sections
 
-<img width="935" height="498" alt="Dashboard" src="https://github.com/user-attachments/assets/ae1dffb7-59a8-46f8-9e8d-a5ca6dfe8ea5" />
+<img width="935" height="498" alt="Dashboard" src="https://github.com/user-attachments/assets/2c6cbd0b-f25a-4df7-b21a-939cec22e2e6" />
 
-### 1. KPI Summary (Top Row)
-- **Total Employees** — headcount snapshot
-- **Attrition Rate** — percentage of employees who left
-- **Average Salary** — mean compensation across all employees
 
-### 2. Workforce Demographics (Left Panel)
-- **Gender Distribution** — donut chart: 892 Male vs. 817 Female
-- **Age Distribution** — horizontal bar chart by age group (Under 25, 25–34, 35–44, 45–54, 55+); largest group is Under 25
-- **Total Employees by Department** — bar chart across 10 departments; IT leads with 223 employees
+### 1. KPI Summary
+Out of **1,709 employees**, 1,624 are active with only 85 inactive — an attrition rate of **5.23%**, reflecting strong retention. Average income is **21,422**.
 
-### 3. Labour Cost Analysis (Center)
-- **Total Labour Cost by Ethnic Group & Contract Type** — grouped bar chart comparing Hourly vs. Salary costs across Groups A–G; Group G has the highest salary cost (3.818M)
-- **Total Labour Cost by Department** — horizontal bar chart; IT leads at 4.773M, Sales lowest at 2.271M
+### 2. Workforce Demographics
 
-### 4. Trend Analysis (Right Panel)
-- **Trending Total Labor Cost by Year** — line chart (2016–2018) showing Hourly and Salary cost trends; both grow steadily with Salary costs higher overall
-- **Total Labour Cost & Headcount** — combo chart; headcount grew from 499 (2016) → 553 (2017) → 657 (2018); total income grew from 10.643M → 11.813M → 14.156M
-- **Total Headcount by BU Region** — treemap showing regional distribution: North dominates (755), followed by South (477), East (281), West (196)
+| Dimension | Highlight |
+|---|---|
+| **Gender** | Male 892 (52.2%) vs. Female 817 (47.8%) — near-balanced |
+| **Age** | Under 25 dominates at **703 (41.1%)**, nearly 2× the 25–34 group (325) |
+| **Top Dept** | IT leads headcount at **223**; Sales is smallest at **140** (−37%) |
 
-### 5. Year Filter (Left Sidebar)
-- Slicer buttons for **2016**, **2017**, **2018** enabling year-by-year analysis
+### 3. Labour Cost Analysis
+
+**By Ethnic Group:** Total labour cost is **36,610,903** — Salary accounts for **57.6%** (21,070,072) vs. Hourly 42.4% (15,540,831).
+
+| Group | Hourly | Salary | Total |
+|---|---|---|---|
+| Group E | 2,680,152 | 3,343,829 | **6,023,981** |
+| Group B | 2,048,088 | 3,616,489 | **5,664,577** |
+| Group G | 1,801,403 ↓ | 3,818,043 ↑ | **5,619,446** |
+| Group A | 2,311,927 | 2,222,005 | **4,533,932** |
+
+> Group G has the **highest Salary** but **lowest Hourly** — predominantly salaried workforce.
+
+**By Department:** IT is the costliest at **4,772,538** — 2.1× more than Sales (2,270,588). HR (4,418,918) and Logistics (4,376,141) follow closely behind.
+
+### 4. Trend Analysis
+
+**Labour Cost by Year:**
+
+| Year | Hourly | Salary | Total | YoY Growth |
+|---|---|---|---|---|
+| 2016 | 4,247,408 | 6,395,210 | 10,642,618 | — |
+| 2017 | 4,791,166 | 7,021,359 | 11,812,524 | +11.0% |
+| 2018 | 6,502,258 | 7,653,504 | 14,155,762 | +19.8% |
+
+Total labour cost grew **+33.0% over 3 years**. Hourly cost accelerated sharply in 2018 (+35.7% YoY) vs. Salary (+9.0%), pointing to increased part-time or contract hiring.
+
+**Headcount vs. Income:**
+
+| Year | Headcount | Total Income | Income/Head |
+|---|---|---|---|
+| 2016 | 499 | 10,642,618 | ~21,328 |
+| 2017 | 553 | 11,812,524 | ~21,360 |
+| 2018 | 657 | 14,155,762 | ~21,546 |
+
+Headcount grew **+31.7%** (499 → 657) while income per head stayed flat (~21,300–21,500), meaning cost growth was driven entirely by **headcount expansion**, not salary increases.
+
+**By BU Region:** North dominates at **755 employees (44.2%)** — nearly equal to the other three regions combined. South: 477 (27.9%), East: 281 (16.4%), West: 196 (11.5%).
+
+### 5. Year Slicer
+Filter all visuals by **2016 / 2017 / 2018** to compare trends year by year.
 
 ---
 
-## Tools & Technologies
+## Tools
 
-| Tool | Purpose |
+| Tool | Usage |
 |---|---|
-| Microsoft Excel | Data storage and formula-based column derivation |
-| Power BI | Dashboard design and interactive visualization |
+| Microsoft Excel | Data cleaning, filtering, pivot tables, metrics & dashboard |
 
 ---
 
 ## Key Insights
 
--  **Headcount grew 31.7%** from 2016 to 2018 (499 → 657 employees)
--  **IT department** has both the most employees and the highest labour cost
--  **North region** accounts for ~44% of total headcount
--  **Hourly workers outnumber salaried** employees (965 vs. 744)
--  **Under-25s are the largest age group**, suggesting a young workforce
--  **Attrition is relatively low** at 5.23%, indicating good retention
+-  Headcount grew **+31.7%** in 3 years (499 → 657), the primary driver of total labour cost increase
+-  **IT** has the most employees (223) and highest labour cost (4,772,538)
+-  **Hourly cost surged +35.7% in 2018**, far outpacing Salary growth (+9.0%)
+-  **41.1% of employees are Under 25** — the workforce is heavily skewed young
+-  **North region** holds 44.2% of total headcount (755 / 1,709)
+-  Attrition at **5.23%** reflects solid employee retention
 
----
-
-## How to Use
-
-1. Open `datasetcv10.xlsx` to explore or update the raw data
-2. Open the Power BI `.pbix` file and refresh the data source if needed
-3. Use the **year slicer** (2016 / 2017 / 2018) on the left panel to filter all visuals
-4. Hover over charts for detailed tooltips and drill-through options
