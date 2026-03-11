@@ -1,18 +1,32 @@
-# Data Porfolio: HR Workforce Analytics Dashboard
-
-> An Excel-based dashboard analyzing workforce demographics, labour costs, and headcount trends from 2016 to 2018.
+# Data Portfolio: HR Workforce Analytics Dashboard
 
 ---
 
-## Overview
+## Table of Contents
+- [Objective](#objective)
+- [Tools Used](#tools-used)
+- [Dataset](#dataset)
+- [Measures](#measures)
+- [Dashboard Sections](#dashboard-sections)
+- [Key Insights](#key-insights)
+- [Repository Structure](#repository-structure)
 
-| Metric | Value |
+---
+
+## Objective
+
+Help HR teams and management quickly understand:
+- Overall workforce composition and demographics
+- Labour cost breakdown by department, ethnic group, and contract type
+- Headcount and cost trends over time (2016–2018)
+
+---
+
+## Tools Used
+
+| Tool | Purpose |
 |---|---|
-| Total Employees | 1,709 (Active: 1,624 / Inactive: 85) |
-| Attrition Rate | 5.23% |
-| Average Income | 21,422 |
-| Total Labour Cost | 36,610,903 |
-| Data Period | 2016 – 2018 |
+| Microsoft Excel | Data cleaning, filtering, pivot tables, measures & dashboard |
 
 ---
 
@@ -23,18 +37,18 @@
 | Column | Description |
 |---|---|
 | `Date` | Record snapshot date |
-| `EmpID` | Unique employee ID |
+| `EmpID` | Unique employee identifier |
 | `Gender` | Male / Female |
 | `Department` | Employee's department |
 | `Position` | Job title |
 | `Age` | Employee age |
 | `Age Group` | Age bracket (formula-derived) |
-| `EthnicGroup` | Ethnic group (A–G) |
+| `EthnicGroup` | Ethnic group classification (Group A–G) |
 | `Employment Type` | Full-time (FT) / Part-time (PT) |
-| `BU Region` | North / South / East / West |
+| `BU Region` | Business unit region (North / South / East / West) |
 | `HireDate` | Date of hire |
 | `EndDate` | End date (blank if still active) |
-| `Status` | Active / Inactive (formula-derived) |
+| `Status` | Active / Inactive (formula-derived from EndDate) |
 | `PayType` | Salary / Hourly |
 | `AgeGroup` | Alternative age grouping |
 | `Date (Year)` | Year extracted from Date |
@@ -42,10 +56,37 @@
 
 ---
 
+## Measures
+
+Key metrics calculated using Excel formulas and Pivot Tables:
+
+```excel
+-- Total Employees
+=COUNTA(Data[EmpID])
+
+-- Active / Inactive Employees
+=COUNTIF(Data[Status], "Active")
+=COUNTIF(Data[Status], "InActive")
+
+-- Attrition Rate
+=COUNTIF(Data[Status],"InActive") / COUNTA(Data[EmpID])
+
+-- Average Income
+=AVERAGE(Data[Income])
+
+-- Total Labour Cost
+=SUM(Data[Income])
+
+-- Age Group (formula-derived column)
+=IF([@Age]<25,"Under 25",IF([@Age]<35,"25–34",IF([@Age]<45,"35–44",IF([@Age]<55,"45–54","55+"))))
+
+-- Status (formula-derived column)
+=IF(ISBLANK([@EndDate]),"Active","InActive")
+```
+
+---
+
 ## Dashboard Sections
-
-<img width="935" height="498" alt="Dashboard" src="https://github.com/user-attachments/assets/2c6cbd0b-f25a-4df7-b21a-939cec22e2e6" />
-
 
 ### 1. KPI Summary
 Out of **1,709 employees**, 1,624 are active with only 85 inactive — an attrition rate of **5.23%**, reflecting strong retention. Average income is **21,422**.
@@ -69,9 +110,9 @@ Out of **1,709 employees**, 1,624 are active with only 85 inactive — an attrit
 | Group G | 1,801,403 ↓ | 3,818,043 ↑ | **5,619,446** |
 | Group A | 2,311,927 | 2,222,005 | **4,533,932** |
 
-> Group G has the **highest Salary** but **lowest Hourly** — predominantly salaried workforce.
+> Group G has the **highest Salary** but **lowest Hourly** cost — predominantly salaried workforce.
 
-**By Department:** IT is the costliest at **4,772,538** — 2.1× more than Sales (2,270,588). HR (4,418,918) and Logistics (4,376,141) follow closely behind.
+**By Department:** IT is the costliest at **4,772,538** — 2.1× more than Sales (2,270,588). HR (4,418,918) and Logistics (4,376,141) follow closely.
 
 ### 4. Trend Analysis
 
@@ -102,20 +143,27 @@ Filter all visuals by **2016 / 2017 / 2018** to compare trends year by year.
 
 ---
 
-## Tools
-
-| Tool | Usage |
-|---|---|
-| Microsoft Excel | Data cleaning, filtering, pivot tables, metrics & dashboard |
-
----
-
 ## Key Insights
 
--  Headcount grew **+31.7%** in 3 years (499 → 657), the primary driver of total labour cost increase
--  **IT** has the most employees (223) and highest labour cost (4,772,538)
+-  Headcount grew **+31.7%** in 3 years (499 → 657) — the primary driver of total labour cost increase
+-  **IT** has the most employees (223) and the highest labour cost (4,772,538)
 -  **Hourly cost surged +35.7% in 2018**, far outpacing Salary growth (+9.0%)
 -  **41.1% of employees are Under 25** — the workforce is heavily skewed young
 -  **North region** holds 44.2% of total headcount (755 / 1,709)
 -  Attrition at **5.23%** reflects solid employee retention
 
+---
+
+## Repository Structure
+
+```
+hr-workforce-dashboard/
+┣ assets/
+┃ ┣ images/           ← Dashboard screenshots
+┃ ┗ dataset/          ← datasetcv10.xlsx
+┗ README.md
+```
+
+---
+
+> Built as part of an HR Analytics portfolio project using Microsoft Excel.
